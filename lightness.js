@@ -1,3 +1,10 @@
+/**
+ * Ligherness.js
+ * Version: 0.1.0
+ * Contach: shawnlin0201@gmail.com
+ * License: MIT
+ */
+
 function Lightness(obj) {
 	// Initialize
 	let _self = this;
@@ -5,7 +12,7 @@ function Lightness(obj) {
 	this._targetDOM = this._targetDOM || document.body.getElementsByTagName("*");
 
 	// Private Methods
-	this._setTargetDOM = function () {
+	this._setTargetDOM = function () { // todo 實作能直接比對如 jQuery selector
 		for (let i = 0; i < this._targetDOM.length; i++) {
 			let node = this._targetDOM[i];
 
@@ -21,33 +28,32 @@ function Lightness(obj) {
 	}
 	
 	this._replaceCurlyQuoteText = function (rawText) {
-		let pattern = /{{(.+?)}}/g;
-		let curlyQuoteText = rawText.split(' ').join('').match(pattern);
-		let compiledText = '';
-		if (curlyQuoteText) {
-			compiledText = rawText.replace(pattern, (_, i) => {
+		let curlyQuotePattern = /{{(.+?)}}/g;
+		let matchCurlyQuoteText = rawText.split(' ').join('').match(curlyQuotePattern);
+		let compiledText = rawText;
+
+		if (matchCurlyQuoteText) {
+			compiledText = rawText.replace(curlyQuotePattern, (_, i) => {
 				return eval('_self.data.' + i.split(' ').join('')) // todo 找更好的方法取代 eval
 			})
-		} else {
-			compiledText = rawText
 		}
+
 		return compiledText
 	}
-	
-	
-	
+
 	this.traverseChildNodes = function (parent) {
 		if (parent.nodeType === 1) {
 			for (let j = 0; j < parent.attributes.length; j++) {
-				let lightnessPattern = /^l-/;
-				if(parent.attributes[j].nodeName.match(lightnessPattern)){
-						let attrType = parent.attributes[j].nodeName.split('l-')[1]
+				let attrPattern = /^l-/;
 
-						if (attrType === 'alert') {
-							parent.addEventListener('click', function () {
-										alert(parent.attributes[j].nodeValue)
-								})
-						}
+				if(parent.attributes[j].nodeName.match(attrPattern)){
+					let attrType = parent.attributes[j].nodeName.split('l-')[1]
+
+					if (attrType === 'alert') {
+						parent.addEventListener('click', function () {
+								alert(parent.attributes[j].nodeValue)
+							})
+					}
 				}
 			}
 		}
