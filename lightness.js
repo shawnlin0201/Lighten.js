@@ -34,7 +34,7 @@ function Lightness(obj) {
 
     if (matchCurlyQuoteText) {
       compiledText = rawText.replace(curlyQuotePattern, (_, i) => {
-        return eval('_this._data.' + i.split(' ').join('')) // todo 找更好的方法取代 eval
+        return _this.getInstanceData(i)
       })
     }
 
@@ -42,7 +42,11 @@ function Lightness(obj) {
   }
 
   this.traverseChildNodes = function (parent) {
-    if (parent.nodeType === 1) {
+    const NODETYPE_ELEMENT = 1;
+    const NODETYPE_TEXT = 3;
+    if (parent.nodeType === NODETYPE_TEXT) { return void 0; }
+    if ((parent.nodeType === NODETYPE_ELEMENT)) {
+      // directive Factory
       for (let j = 0; j < parent.attributes.length; j++) {
         let anyDirectiveParttern = /^:?l-/;
         if(parent.attributes[j].nodeName.match(anyDirectiveParttern)){
@@ -51,7 +55,7 @@ function Lightness(obj) {
           let attrType = parent.attributes[j].nodeName.split('l-')[1]
 
           if (attrType === 'alert') {
-            let attrValue = isGetterMode ? _this.getter(parent.attributes[':l-alert'].nodeValue) : parent.attributes['l-alert'].nodeValue;
+            let attrValue = isGetterMode ? _this.getInstanceData(parent.attributes[':l-alert'].nodeValue) : parent.attributes['l-alert'].nodeValue;
 
             parent.addEventListener('click', function () {
                 alert(attrValue);
@@ -59,7 +63,7 @@ function Lightness(obj) {
           }
 
           if (attrType === 'show') {
-            let attrValue = isGetterMode ? _this.getter(parent.attributes[':l-show'].nodeValue) : parent.attributes['l-show'].nodeValue;
+            let attrValue = isGetterMode ? _this.getInstanceData(parent.attributes[':l-show'].nodeValue) : parent.attributes['l-show'].nodeValue;
 
             if (!attrValue) {
               parent.style.display = 'none';
@@ -67,24 +71,23 @@ function Lightness(obj) {
           }
         }
       }
-    }
 
-    // replaceCurly
-    for (let child of parent.childNodes) {
-      const ELEMENT = 1;
-      const TEXT = 3;
-      
-      if (child.nodeType === ELEMENT) {
-        _this.traverseChildNodes(child)
-      }
+      // check children nodes
+      for (let child of parent.childNodes) {
+        // traverse more deep
+        if (child.nodeType === NODETYPE_ELEMENT) {
+          _this.traverseChildNodes(child)
+        }
 
-      if (child.nodeType === TEXT) {
-        child.nodeValue = _this._replaceCurlyQuoteText(child.nodeValue)
+        // replace curly quote text
+        if (child.nodeType === NODETYPE_TEXT) {
+          child.nodeValue = _this._replaceCurlyQuoteText(child.nodeValue)
+        }
       }
     }
   }
 
-  this.getter = function (target) {
+  this.getInstanceData = function (target) {
     try {
       let result = eval('_this._data.' + target.split(' ').join(''));
 
