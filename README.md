@@ -1,5 +1,7 @@
 # Lightness.js
-Lightness.js is a lightness front-end framework.
+Lightness.js is a lightness web framework, focus on boost **one** page application develop exprience.
+
+
 
 ## Getting Started
 [Download](https://raw.githubusercontent.com/shawnlin0201/Lightness.js/master/lightness.js) `lightness.js` and import script file above the end of `head`.
@@ -87,6 +89,8 @@ It will be render like this.
 ```html
 <div style='display:none;'> Hello, Lightness! </div>
 ```
+## Changelog
+Version change detail are documented in the [release page.](https://github.com/shawnlin0201/Lightness.js/releases)
 
 ## License
 
