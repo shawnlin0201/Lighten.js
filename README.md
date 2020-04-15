@@ -1,5 +1,5 @@
-# Lightness.js
-Lightness.js is a lightness web framework, focus on boost **one** page application develop exprience.
+<h1 align="center"> Lightness.js</h1>
+<p align="center">Lightness.js is a lightness web framework, focus on boost <strong>one</strong> page application develop exprience.</p>
 
 
 
