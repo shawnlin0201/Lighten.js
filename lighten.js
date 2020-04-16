@@ -5,7 +5,7 @@
  * License: MIT
  */
 
-function Lightness(obj) {
+function Lighten(obj) {
   // Initialize
   let _this = this;
   this._data = obj.data;
@@ -18,7 +18,7 @@ function Lightness(obj) {
 
       for (let j = 0; j < node.attributes.length; j++) {
         let nodeName = node.attributes[j].nodeName;
-        let pattern = /^lightness\-app/;
+        let pattern = /^lighten\-app/;
 
         if (nodeName.match(pattern)) {
           _this._targetDOM = node;
@@ -105,7 +105,7 @@ function Lightness(obj) {
     }
   }
 
-  // Start up Lightness.js when DOM content loaded.
+  // Start up lighten.js when DOM content loaded.
   document.addEventListener('DOMContentLoaded', function () {
     _this.init()
   })
