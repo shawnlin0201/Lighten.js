@@ -1,16 +1,16 @@
-<h1 align="center"> Lightness.js</h1>
-<p align="center">Lightness.js is a lightness web library, focus on boost <strong>one</strong> page application develop exprience.</p>
+<h1 align="center"> Lighten.js</h1>
+<p align="center">Lighten.js is a lighten web library, focus on boost <strong>one</strong> page application develop exprience.</p>
 
 
 
 ## Getting Started
-[Download](https://raw.githubusercontent.com/shawnlin0201/Lightness.js/master/lightness.js) `lightness.js` and import script file above the end of `head`.
+[Download](https://raw.githubusercontent.com/shawnlin0201/Lighten.js/master/lighten.js) `lighten.js` and import script file above the end of `head`.
 
 ```html
 <html>
   <head>
-    <!-- import lightness.js here -->
-    <script src='./lightness.js'></script>
+    <!-- import lighten.js here -->
+    <script src='./lighten.js'></script>
   </head>
   <body>
     <!-- your script here-->
@@ -19,9 +19,9 @@
 </html>
 ```
 
-Use `new` operator to create Lightness Instance and setup your data.
+Use `new` operator to create Lighten Instance and setup your data.
 ```js
-let lightness = new Lightness({
+let lighten = new Lighten({
   data: data
 })
 ```
@@ -42,16 +42,16 @@ Use double curly quote to get instance data.
 ```js
 // your script file
 let data = {
-  title: 'Hello, Lightness!'
+  title: 'Hello, Lighten!'
 }
 
-let lightness = new Lightness({
+let lighten = new Lighten({
   data: data
 })
 ```
 And It will be render like this.
 ```html
-<h1> Hello, Lightness! </h1>
+<h1> Hello, Lighten! </h1>
 ```
 
 ### Directive
@@ -78,22 +78,22 @@ If you want to binding instance data to directive, add `:` front to directive an
 ```
 
 ```js
-let lightness = new Lightness({
+let lighten = new Lighten({
   data: {
-    title: 'Hello, Lightness!'
+    title: 'Hello, Lighten!'
     isLightboxOpening: false
   }
 })
 ```
 It will be render like this.
 ```html
-<div style='display:none;'> Hello, Lightness! </div>
+<div style='display:none;'> Hello, Lighten! </div>
 ```
 ## Changelog
-Version change detail are documented in the [release page.](https://github.com/shawnlin0201/Lightness.js/releases)
+Version change detail are documented in the [release page.](https://github.com/shawnlin0201/Lighten.js/releases)
 
 ## License
 
-[MIT](https://github.com/shawnlin0201/Lightness.js/blob/master/LICENSE)
+[MIT](https://github.com/shawnlin0201/Lighten.js/blob/master/LICENSE)
 
 Copyright (c) 2020-present, Shawn Lin
