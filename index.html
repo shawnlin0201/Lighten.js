@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lighten.js</title>
+    <script src="./lighten.js"></script>
+</head>
+<body>
+    <div lighten-app id="app">
+        <h1>{{_string}}</h1>
+        <h3>樣板語法</h3>
+        <ul>
+            <li>原始值： 原始值</li>
+            <li>字串： {{ _string }}</li>
+            <li>數值： {{ _number }}</li>
+            <li>布林： {{ _boolean }}</li>
+            <li>物件： {{ _obj.data }}</li>
+            <li>深層物件： {{ _obj.obj.data }}</li>
+            <li>陣列： {{ _array }}</li>
+        </ul>
+        <h3>一般指令 normal-directive</h3>
+        <ul>
+            <li><span l-alert="Hello, lighten!!">alert</span></li>
+            <li><span l-show="anyValue">show</span></li>
+            <li><span l-show="">show</span></li>
+        </ul>
+        <h3>綁定指令 bindding-directive</h3>
+        <ul>
+            <li><span :l-alert="_string">alert</span></li>
+            <li><span :l-show="_boolean">show</span></li>
+            <li><span :l-show="_boolean">show</span></li>
+        </ul>
+    </div>
+    <script src="./mock.js"></script>
+</body>
+</html>
