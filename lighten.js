@@ -93,7 +93,7 @@ function Lighten(obj) {
 
       return result;
     } catch (error) {
-      console.error('Can not find data "'+target+'" in Ligthness instance.')
+      console.error('Can not find data "'+target+'" in instance.')
     }
   }
 
